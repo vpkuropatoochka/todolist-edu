@@ -16,6 +16,8 @@ export function LoginPage({ onSuccess }: LoginPageProps) {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (pending || !token.trim()) return;
+
     setError("");
     setPending(true);
 
@@ -33,30 +35,28 @@ export function LoginPage({ onSuccess }: LoginPageProps) {
   return (
     <main className="login-page">
       <form className="login-card" onSubmit={handleSubmit}>
-        <p className="brand login-card__brand">TodoList</p>
-        <h1>Вход</h1>
+        <h1>Вход в список дел</h1>
 
-        <div className="login-card__field">
-          <Field
-            id="api-token"
-            type="password"
-            label="Токен доступа"
-            value={token}
-            onChange={setToken}
-            autoFocus
-            autoComplete="off"
-          />
-        </div>
+        <Field
+          id="api-token"
+          type="password"
+          label="Токен доступа"
+          value={token}
+          onChange={setToken}
+          disabled={pending}
+          autoFocus
+          autoComplete="off"
+        />
 
-        <button
-          type="submit"
-          className="btn btn-primary login-card__submit"
-          disabled={pending || !token.trim()}
-        >
+        <button type="submit" className="btn btn-primary" disabled={pending || !token.trim()}>
           {pending ? "Входим…" : "Войти"}
         </button>
 
-        {error ? <p className="error-text" role="alert">{error}</p> : null}
+        {error ? (
+          <p className="error-text" role="alert">
+            {error}
+          </p>
+        ) : null}
       </form>
     </main>
   );

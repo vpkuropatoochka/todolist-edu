@@ -4,7 +4,8 @@ type FieldProps = {
   value: string;
   onChange: (value: string) => void;
   type?: "text" | "password";
-  placeholder?: string;
+  maxLength?: number;
+  disabled?: boolean;
   autoFocus?: boolean;
   autoComplete?: string;
 };
@@ -15,7 +16,8 @@ export function Field({
   value,
   onChange,
   type = "text",
-  placeholder,
+  maxLength,
+  disabled,
   autoFocus,
   autoComplete,
 }: FieldProps) {
@@ -26,7 +28,9 @@ export function Field({
         id={id}
         type={type}
         value={value}
-        placeholder={placeholder}
+        className="text-input"
+        maxLength={maxLength}
+        disabled={disabled}
         autoFocus={autoFocus}
         autoComplete={autoComplete}
         onChange={(e) => onChange(e.target.value)}

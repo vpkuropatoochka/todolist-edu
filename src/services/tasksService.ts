@@ -8,10 +8,7 @@ export async function createTask(input: CreateTaskInput): Promise<Task> {
   });
 }
 
-export async function updateTask(
-  id: string,
-  input: UpdateTaskInput,
-): Promise<Task> {
+export async function updateTask(id: string, input: UpdateTaskInput): Promise<Task> {
   return api<Task>(`/api/tasks/${id}/`, {
     method: "PATCH",
     body: JSON.stringify(input),
@@ -19,13 +16,7 @@ export async function updateTask(
 }
 
 export async function listTasksByRunId(runId: string): Promise<Task[]> {
-  return api<Task[]>(
-    `/api/tasks/?runId=${encodeURIComponent(runId.trim())}`,
-  );
-}
-
-export async function getTaskById(id: string): Promise<Task> {
-  return api<Task>(`/api/tasks/${id.trim()}/`);
+  return api<Task[]>(`/api/tasks/?runId=${encodeURIComponent(runId.trim())}`);
 }
 
 export async function deleteTask(id: string): Promise<void> {

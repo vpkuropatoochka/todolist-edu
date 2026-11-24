@@ -1,8 +1,8 @@
 export function TrashIcon() {
   return (
     <svg
-      width="18"
-      height="18"
+      width="24"
+      height="24"
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden="true"
