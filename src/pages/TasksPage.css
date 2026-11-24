@@ -1,0 +1,41 @@
+.tasks-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.tasks-header__brand {
+  margin: 0 0 0.35rem;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.tasks-header h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 550;
+  letter-spacing: -0.03em;
+}
+
+.user-card__meta {
+  display: grid;
+  gap: 0.2rem;
+  margin-top: 0.35rem;
+}
+
+.user-card__meta strong {
+  font-size: 1.15rem;
+}
+
+.results-block {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 560px) {
+  .tasks-header {
+    flex-direction: column;
+  }
+}

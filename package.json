@@ -1,0 +1,49 @@
+{
+  "name": "todolist-edu",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "vite",
+    "dev:server": "tsx watch server/src/app.ts",
+    "build": "npm run prisma:generate && tsc -b && vite build && tsc -p server/tsconfig.json",
+    "start": "node server/dist/app.js",
+    "typecheck": "tsc -b --pretty false && tsc -p server/tsconfig.json --noEmit --pretty false",
+    "preview": "vite preview",
+    "lint": "cd server && eslint .",
+    "format": "prettier --config server/.prettierrc.json --write src server/src server/prisma.config.ts vite.config.ts",
+    "prisma:generate": "prisma generate --config server/prisma.config.ts",
+    "prisma:migrate": "prisma migrate dev --config server/prisma.config.ts",
+    "prisma:deploy": "prisma migrate deploy --config server/prisma.config.ts"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.10.1",
+    "@prisma/client": "^7.10.1",
+    "dotenv": "^18.0.10",
+    "express": "^5.1.0",
+    "pg": "^8.23.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/express": "^5.0.5",
+    "@types/node": "^24.10.1",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^5.1.0",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.7",
+    "prettier": "^3.10.1",
+    "prisma": "^7.10.1",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.4",
+    "vite": "^7.2.2"
+  }
+}
